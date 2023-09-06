@@ -7,7 +7,7 @@ function setup_pScope(pScope){
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
   pScope.load_image_sequence("moving_dragon", "png", 11);
-  //pScope.load_image("moving_dragon","png")
+  //pScope.load_image("moving_dragon_2","png")
 }
 
 function setup_layers(pScope){
@@ -74,6 +74,7 @@ function outsideRed (x,y,animation,pScope){
 }
 function dragon(x,y,animation,pScope){
   // translate(x,y-650);
-  //scale(-0.5);
-  pScope.draw_image_from_sequence("moving_dragon", 0, 0, animation.frame);
+  scale(0.1);
+  //pScope.load_image("moving_dragon" , "png");
+  pScope.draw_image_from_sequence("moving_dragon", 0, -7000, animation.frame);
 }
