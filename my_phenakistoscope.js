@@ -1,4 +1,4 @@
-const SLICE_COUNT = 10;
+const SLICE_COUNT = 11;
 
 function setup_pScope(pScope){
   pScope.output_mode(ANIMATED_DISK);
@@ -6,6 +6,8 @@ function setup_pScope(pScope){
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
+  pScope.load_image_sequence("moving_dragon", "png", 11);
+  //pScope.load_image("moving_dragon","png")
 }
 
 function setup_layers(pScope){
@@ -23,6 +25,10 @@ function setup_layers(pScope){
   var layer1 = new PLayer(faces);
   layer1.mode( SWIRL(4) );
   layer1.set_boundary( 100, 800 );
+
+  let dragonSequence = new PLayer(dragon);
+  dragonSequence.mode(RING);
+  dragonSequence.set_boundary(0,800);
   
  //var layer2 = new PLayer(squares);
   //layer2.mode( RING );
@@ -65,4 +71,9 @@ function insideRed (x,y,animation,pScope){
 }
 function outsideRed (x,y,animation,pScope){
   pScope.fill_background(191, 19, 13, 255);//red 
+}
+function dragon(x,y,animation,pScope){
+  // translate(x,y-650);
+  //scale(-0.5);
+  pScope.draw_image_from_sequence("moving_dragon", 0, 0, animation.frame);
 }
