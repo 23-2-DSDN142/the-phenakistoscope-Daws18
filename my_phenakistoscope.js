@@ -2,6 +2,7 @@ const SLICE_COUNT = 11;
 
 function setup_pScope(pScope){
   pScope.output_mode(ANIMATED_DISK);
+ //pScope.output_mode(STATIC_DISK);
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
@@ -74,7 +75,7 @@ function outsideRed (x,y,animation,pScope){
 }
 function dragon(x,y,animation,pScope){
   // translate(x,y-650);
-  scale(0.1);
+  scale(0.5);
   //pScope.load_image("moving_dragon" , "png");
-  pScope.draw_image_from_sequence("moving_dragon", 0, -7000, animation.frame);
+  pScope.draw_image_from_sequence("moving_dragon", 0, -700, animation.frame);
 }
