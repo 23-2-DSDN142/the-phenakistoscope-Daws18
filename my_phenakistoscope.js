@@ -8,7 +8,8 @@ function setup_pScope(pScope){
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
   pScope.load_image_sequence("moving_dragon", "png", 11);
-  //pScope.load_image("moving_dragon_2","png")
+  pScope.load_image("symbol","png")
+  pScope.load_image("cracker", "png")
 }
 
 function setup_layers(pScope){
@@ -23,20 +24,34 @@ function setup_layers(pScope){
   outsideBackground.mode(RING);
   outsideBackground.set_boundary(970,1000);
 
-  var layer1 = new PLayer(faces);
+  var layer1 = new PLayer(firework);
   layer1.mode( SWIRL(4) );
   layer1.set_boundary( 100, 800 );
+
+  var layer2 = new PLayer(cracker);
+  layer2.mode( SWIRL(1) );
+  layer2.set_boundary( 100, 300 );
 
   let dragonSequence = new PLayer(dragon);
   dragonSequence.mode(RING);
   dragonSequence.set_boundary(0,800);
-  
- //var layer2 = new PLayer(squares);
-  //layer2.mode( RING );
-  //layer2.set_boundary( 0, 400 );
-}
 
-function faces(x, y, animation, pScope){
+  let CenterImage = new PLayer(symbol);
+  CenterImage.mode(RING);
+  CenterImage.set_boundary(0,30);
+  
+
+  }
+
+function symbol(x,y,animation,pScope){
+  scale(0.8);
+  pScope.draw_image("symbol",x,y);//dragon charcter symbol text type 
+}
+function cracker(x,y,animation,pScope){
+  scale(0.4);
+  pScope.draw_image("cracker",x,y);// fire cracker asset
+}
+function firework(x, y, animation, pScope){
   
   scale(animation.wave(4));
 
@@ -51,21 +66,21 @@ function faces(x, y, animation, pScope){
 
 }
 
-function squares(x, y, animation, pScope){
+//function squares(x, y, animation, pScope){
 
   // this is how you set up a background for a specific layer
   //let angleOffset = (360 / SLICE_COUNT) / 2
   //let backgroundArcStart = 270 - angleOffset;
   //let backgroundArcEnd = 270 + angleOffset;
 
-  fill(66, 135, 245)
-  arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
-  scale(animation.wave(1));
-  fill(255)
-  ellipse(0,0,50,50);
-  rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
+  //fill(66, 135, 245)
+  //arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
+  //scale(animation.wave(1));
+  //fill(255)
+  //ellipse(0,0,50,50);
+  //rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
 
-}
+
 
 function insideRed (x,y,animation,pScope){
   pScope.fill_background(191, 19, 13, 255);//red 
