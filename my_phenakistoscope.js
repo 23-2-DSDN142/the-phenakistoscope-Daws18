@@ -2,7 +2,6 @@ const SLICE_COUNT = 11;
 
 function setup_pScope(pScope){
   pScope.output_mode(ANIMATED_DISK);
- //pScope.output_mode(STATIC_DISK);
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
@@ -15,7 +14,7 @@ function setup_pScope(pScope){
 
 function setup_layers(pScope){
 
-  new PLayer(null,237, 231, 194);  //lets us draw the whole circle background, ignoring the boundaries
+  new PLayer(null,237, 231, 194);  //lets us draw the whole circle background, ignoring the boundaries (aged white colour)
 
   let insideBackground = new PLayer(insideRed);//red centre ring 
   insideBackground.mode(RING);
@@ -48,22 +47,22 @@ function setup_layers(pScope){
 
 }
 function symbol(x,y,animation,pScope){
-  scale(0.8);
+  scale(0.8);//size of image
   pScope.draw_image("symbol",x,y);//dragon charcter symbol text type 
 }
 function cracker(x,y,animation,pScope){
-  scale(0.4);
+  scale(0.4);//size of image
   pScope.draw_image("cracker",x,y);// fire cracker asset
 }
 function firework(x, y, animation, pScope){
   
   scale(animation.wave(4));
 
-  fill(191, 19, 13);//red 
+  fill(191, 19, 13);//red colour
   ellipse(0,0,60,60);//red circle 
   
 
-  fill(237, 161, 9)//yellow 
+  fill(237, 161, 9)//yellow colour 
   let ballSize  = 20 + (animation.wave(1)* 20)
   ellipse(0,0,ballSize); 
   
@@ -79,6 +78,6 @@ function dragon(x,y,animation,pScope){
   pScope.draw_image_from_sequence("moving_dragon", 0, -700, animation.frame); //animated dragon sequence
 }
 function lantern(x,y,animation,pScope){
-  scale(0.4);
-  pScope.draw_image("lantern",x,y);// lantern asset
+  scale(0.4);//size of image
+  pScope.draw_image("lantern",x,y);//lantern asset
 }
